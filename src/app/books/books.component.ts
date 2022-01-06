@@ -7,7 +7,7 @@ import { ApiService } from '../api.service';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit {
-
+  books: any;
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
@@ -16,7 +16,8 @@ export class BooksComponent implements OnInit {
   getBooks() {
     this.api.getBooks()
     .subscribe( res => {
-      console.log(res);
+      console.log(JSON.stringify(res));
+      this.books = res;
     })
   }
 
